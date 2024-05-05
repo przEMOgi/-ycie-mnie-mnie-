@@ -1,0 +1,108 @@
+#include <iostream>
+using namespace std;
+
+// dane  książek
+struct Ksiazka {
+    string tytul;
+    string autor;
+    int rok;
+    string wydawnictwo;
+    double cena;
+};
+
+// Funkcja do wyszukiwania i wyświetlania książek
+void wyszukajKsiazki(Ksiazka* ksiazki, int n, int opcja, void* wartosc) {
+    cout << "Znalezione ksiazki:" << endl;
+    switch (opcja) {
+        case 1: {
+            int* rok = static_cast<int*>(wartosc);
+            for (int i = 0; i < n; ++i) {
+                if (ksiazki[i].rok >= *rok) {
+                    cout << "Tytul:" << ksiazki[i].tytul << "\tAutor:" << ksiazki[i].autor
+                         << "\tRok:" << ksiazki[i].rok << "\tWydawnictwo:" << ksiazki[i].wydawnictwo
+                         << "\tCena:" << ksiazki[i].cena << endl;
+                }
+            }
+            break;
+        }
+        case 2: {
+            double* cena = static_cast<double*>(wartosc);
+            for (int i = 0; i < n; ++i) {
+                if (ksiazki[i].cena > *cena) {
+                    cout << "Tytul:" << ksiazki[i].tytul << "\tAutor:" << ksiazki[i].autor
+                         << "\tRok:" << ksiazki[i].rok << "\tWydawnictwo:" << ksiazki[i].wydawnictwo
+                         << "\tCena:" << ksiazki[i].cena << endl;
+                }
+            }
+            break;
+        }
+        case 3: {
+            string* wydawnictwo = static_cast<string*>(wartosc);
+            for (int i = 0; i < n; ++i) {
+                if (ksiazki[i].wydawnictwo == *wydawnictwo) {
+                    cout << "Tytul:" << ksiazki[i].tytul << "\tAutor:" << ksiazki[i].autor
+                         << "\tRok:" << ksiazki[i].rok << "\tWydawnictwo:" << ksiazki[i].wydawnictwo
+                         << "\tCena:" << ksiazki[i].cena << endl;
+                }
+            }
+            break;
+        }
+        default:
+            cout << "Niepoprawna opcja!" << endl;
+    }
+}
+
+int main() {
+    // tablicy książek
+    Ksiazka ksiegarnia[7] = {
+        { "Tytul1", "autor1", 1925, "Helion1", 23.54 },
+        { "Tytul2", "autor2", 1926, "Helion2", 24.54 },
+        { "Tytul3", "autor1", 1927, "Helion3", 25.54 },
+        { "Tytul4", "autor2", 1928, "Helion1", 26.54 },
+        { "Tytul5", "autor1", 1921, "Helion2", 27.54 },
+        { "Tytul6", "autor2", 1930, "Helion3", 28.54 },
+        { "Tytul7", "autor1", 1931, "Helion1", 29.54 }
+    };
+
+    // Menu wyboru dla użytkownika 
+    cout << "Witaj w ksiegarnii" << endl;
+    cout << "Po jakiej kategorii chcial bys wyszukac ksiazke:" << endl;
+    cout << "1. Rok wydania" << endl;
+    cout << "2. Cena" << endl;
+    cout << "3. Wydawnictwo" << endl;
+    cout << "0. Wyjscie" << endl;
+
+    int opcja;
+    cin >> opcja;
+
+    switch (opcja) {
+        case 1: {
+            int rok;
+            cout << "Podaj od jakiego roku chcesz zobaczyc ksiazki: ";
+            cin >> rok;
+            wyszukajKsiazki(ksiegarnia, 7, 1, &rok);
+            break;
+        }
+        case 2: {
+            double cena;
+            cout << "Podaj cene od ktorej chcesz zobaczyc ksiazki: ";
+            cin >> cena;
+            wyszukajKsiazki(ksiegarnia, 7, 2, &cena);
+            break;
+        }
+        case 3: {
+            string wydawnictwo;
+            cout << "Podaj wydawnictwo ktore chcesz zobaczyc: ";
+            cin >> wydawnictwo;
+            wyszukajKsiazki(ksiegarnia, 7, 3, &wydawnictwo);
+            break;
+        }
+        case 0:
+            cout << "Do widzenia!" << endl;
+            break;
+        default:
+            cout << "Niepoprawna opcja!" << endl;
+    }
+
+    return 0;
+}
