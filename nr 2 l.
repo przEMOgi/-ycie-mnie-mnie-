@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int n;
+    
+    // Krok 1: Inicjalizacja zmiennej k na pierwszą liczbę pierwszą
+    int k = 2;
+
+    // Wprowadzenie liczby przez użytkownika
+    cout << "Podaj liczbe: ";
+    cin >> n;
+
+    // Krok 2: Rozkład liczby na czynniki pierwsze
+    while (n > 1) {
+        // Krok 3: Sprawdzanie podzielności przez aktualną liczbę pierwszą k
+        while (n % k == 0) {
+            // Krok 4: Jeśli liczba jest podzielna przez k, wyświetl k jako czynnik pierwszy
+            cout << k << " ";
+            // Krok 5: Dzielenie n przez k
+            n /= k;
+        }
+        // Krok 6: Zwiększenie k o 1 dla sprawdzenia następnej liczby pierwszej
+        k++;
+    }
+
+    return 0;
+}
