@@ -3,20 +3,20 @@
 using namespace std;
 
 int main() {
-    // Krok 1: Tablica z nieposortowanymi wartościami
+    
     int tab[] = {2, 3, 5, 7, 11, 2, 3, 5, 7, 11, 31, 37, 41, 43, 47, 2, 3, 5, 7, 11, 31, 37, 41, 43, 47};
     int szukana;
 
     cout << "Jaka liczbe poszukujesz: ";
     cin >> szukana;
 
-    // Krok 2: Tablica z numerami indeksów
+     
 int liczby;
 
-    // Krok 3: Zmienna pomocnicza do zapisania indeksu kolejnego elementu znalezionej liczby
+    
     int index = 0;
 
-    // Krok 4: Przechodzenie przez tablicę i szukanie liczby
+     
     for (int i = 0; i < sizeof(tab) / sizeof(tab[0]); ++i) {
         // Krok 5: Jeśli liczba została znaleziona, zapisz indeks
         if (tab[i] == szukana) {
@@ -25,7 +25,6 @@ int liczby;
         }
     }
 
-    // Krok 6: Wyświetlenie pozycji znalezionej liczby
     cout << "Poszukiwana liczba znajduje sie na pozycji: ";
     for (int i = 0; i < liczby.size(); ++i) {
         cout << liczby[i];
